@@ -1,0 +1,37 @@
+package com.payeshgaran.dto.account;
+
+import com.payeshgaran.entity.Account;
+import com.payeshgaran.entity.Transaction;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+import java.math.BigDecimal;
+
+@Data
+public class AccountOutDto {
+    @ApiModelProperty(required = true)
+    private Long id;
+
+    @ApiModelProperty(required = true)
+    private String accountNumber;
+
+    @ApiModelProperty(required = true)
+    private String pin;
+
+    @ApiModelProperty(required = true)
+    private BigDecimal balance;
+
+//    @ApiModelProperty(required = true)
+//    private Transaction balance;
+
+
+
+    public static AccountOutDto convertEntityToOutDto(Account account){
+        AccountOutDto accountOutDto = new AccountOutDto();
+        accountOutDto.setAccountNumber(account.getAccountNumber());
+        accountOutDto.setBalance(account.getBalance());
+        accountOutDto.setPin(account.getPin());
+        accountOutDto.setId(account.getId());
+        return accountOutDto;
+    }
+}
